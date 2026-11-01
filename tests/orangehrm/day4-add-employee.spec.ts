@@ -1,7 +1,6 @@
 import { test } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { PIMPage } from '../pages/PIMPage';
-
+import { LoginPage } from '../../pages/LoginPage';
+import { PIMPage } from '../../pages/PIMPage';
 test('add Narayan Das and verify the employee profile', async ({ page }) => {
   test.setTimeout(90000);
 
