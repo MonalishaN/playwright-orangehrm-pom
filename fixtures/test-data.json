@@ -10,5 +10,11 @@
   },
   "api": {
     "baseURL": "https://fakestoreapi.com"
+  },
+  "opencart": {
+    "url": "https://www.opencart.com/",
+    "demoStoreUrl": "https://demo.opencart.com/",
+    "searchProduct": "MacBook",
+    "staticPassword": "Test@12345"
   }
 }
