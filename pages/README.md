@@ -73,7 +73,18 @@ npx playwright test tests/ecommerce
 # View Report
 npx playwright show-report
 
-📊 Best Practices Followed✅ POM Design Pattern✅ Separation of Pages and Tests✅ Organized folders: api, ui, ecommerce✅ Clean .gitignore - No node_modules, test-results, .playwright-mcp✅ Reusable Page Objects✅ Interview-ready structure👩‍💻 AuthorMonalisha NQA Automation Engineer | Learning Playwright + TypeScriptGitHub: @MonalishaN⭐ If you like this repo, please give it a star!
+📊 Best Practices Followed
+✅ POM Design Pattern
+✅ Separation of Pages and Tests
+✅ Organized folders: api, ui, ecommerce
+✅ Clean .gitignore - No node_modules, test-results, .playwright-mcp
+✅ Reusable Page Objects
+✅ Interview-ready structure
+
+👩‍💻 Author Monalisha N 
+QA Automation Engineer | Learning Playwright + TypeScript
+GitHub: @MonalishaN
+⭐ If you like this repo, please give it a star!
 
 
  
