@@ -1,90 +1,99 @@
-# 🎭 Playwright OrangeHRM POM - Automation Framework
+# 🎭 Playwright TypeScript POM Framework - OrangeHRM + OpenCart E2E
 
-[![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=Playwright&logoColor=white)](https://playwright.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![POM Design](https://img.shields.io/badge/Design-POM-blue?style=for-the-badge)]()
+> Enterprise-grade E2E automation framework built with Playwright + TypeScript + Page Object Model. Demonstrates real-world scenarios: HRM + E-Commerce.
 
-> A professional end-to-end automation framework built with **Playwright + TypeScript + Page Object Model (POM)**. Covers OrangeHRM UI, E-commerce (Flipkart) and API testing.
+![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=Playwright&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![E2E PASS](https://img.shields.io/badge/OpenCart%20E2E-1%20PASSED-brightgreen?style=for-the-badge)
 
+### 🔥 Live Demo Results
+
+**OpenCart E2E - 11 Steps: ✅ PASSED (58.7s)**
 **GitHub:** https://github.com/MonalishaN/playwright-orangehrm-pom
 
-### 📁 Project Structure - Senior SDET Level
-playwright-orangehrm-pom/
-├── pages/                      # Page Object Model
-│   ├── LoginPage.ts            # OrangeHRM Login Page
-│   ├── PIMPage.ts              # PIM / Add Employee Page
-│   └── flipkart-search.page.ts # E-commerce Page Object
-│
+✓ OpenCart e2e registration, login, and product purchase flow (48.8s)
+1 passed
+Demo Site: `https://tutorialsninja.com/demo/` (Cloudflare-free clone of OpenCart, stable for automation)
+
+### ✅ What is Automated?
+
+#### 1. OpenCart - Complete User Journey (11 Steps)
+This is the main E2E that passes 100%:
+1.  Open `https://tutorialsninja.com/demo/`
+2.  Navigate to Register `index.php?route=account/register`
+3.  Register with **unique email** `test+timestamp@demo.com` + `Test@12345`
+4.  Verify `Your Account Has Been Created!`
+5.  Log out
+6.  Log in again with the same credentials
+7.  Verify My Account dashboard
+8.  Search `MacBook` from the header
+9.  Open the first product and verify the product page
+10. Add to Cart & verify success alert `Success: You have added...`
+11. Open Cart and verify Product Name, Quantity, Unit Price, Total
+
+#### 2. OrangeHRM - POM
+- LoginPage, PIMPage, DashboardPage
+- Data-driven tests with fixtures
+
+### 📁 Project Structure
+
+├── fixtures/
+│   ├── base.fixture.ts      # Custom test fixture with all Page Objects
+│   └── test-data.json       # URLs, credentials, search data
+├── pages/
+│   ├── LoginPage.ts         # OrangeHRM
+│   ├── PIMPage.ts
+│   └── opencart/
+│       ├── RegisterPage.ts  # TutorialNinja Register
+│       ├── LoginPage.ts     # TutorialNinja Login
+│       ├── SearchPage.ts    # Search & Product
+│       └── CartPage.ts      # Cart verification
 ├── tests/
-│   ├── ui/                     # OrangeHRM UI Tests
-│   │   ├── orangehrm-login.spec.ts
-│   │   └── day4-add-employee.spec.ts
-│   │
-│   ├── api/                    # API Automation
-│   │   ├── api-product.spec.ts
-│   │   └── day5-extra-tests.spec.ts
-│   │
-│   └── ecommerce/              # E-commerce UI Tests
-│       ├── flipkart-search01.spec.ts
-│       └── flipkart-search02.spec.ts
-│
-├── utils/                      # Test Data & Helpers
-├── playwright.config.ts
-├── package.json
-└── .gitignore
+│   ├── orangehrm/
+│   └── ecommerce/
+│       └── opencart-e2e.spec.ts  # 11-step E2E
+├── utils/
+│   └── helper.ts
+├── playwright.config.ts     # Chromium project (optimized)
+└── package.json
 
-### 🚀 Tech Stack
+### 🚀 How to Run
 
-- **Tool:** Playwright
-- **Language:** TypeScript
-- **Design Pattern:** Page Object Model (POM)
-- **Test Types:** UI, API, E-commerce
-- **Version Control:** Git & GitHub
-
-### ✅ Features Covered
-
-**Day 1-2:** Playwright Setup & First Tests
-**Day 3:** OrangeHRM Login Automation
-**Day 4:** PIM Module - Add Employee with POM
-**Day 5:** Project Refactoring & API Testing
-- Organized into `api / ui / ecommerce`
-- Clean GitHub with proper `.gitignore`
-- Kept all test cases without deletion
-
-### ⚙️ How to Run Tests
-
+**Install:**
 ```bash
-# Install dependencies
 npm install
-npx playwright install
+npx playwright install chromium
 
-# Run all tests
-npx playwright test
+# Headed mode - watch the browser
+npx playwright test tests/ecommerce/opencart-e2e.spec.ts --project=chromium --headed --workers=1
 
-# Run only OrangeHRM UI tests
-npx playwright test tests/ui --headed
+# Fast list mode - no report server hang
+npx playwright test tests/ecommerce/opencart-e2e.spec.ts --project=chromium --reporter=list --workers=1
 
-# Run only API tests
-npx playwright test tests/api
+Run All Tests:
 
-# Run only E-commerce tests
-npx playwright test tests/ecommerce
-
-# View Report
+npx playwright test --project=chromium
 npx playwright show-report
 
-📊 Best Practices Followed
-✅ POM Design Pattern
-✅ Separation of Pages and Tests
-✅ Organized folders: api, ui, ecommerce
-✅ Clean .gitignore - No node_modules, test-results, .playwright-mcp
-✅ Reusable Page Objects
-✅ Interview-ready structure
+🛠️ Tech Stack & Best Practices
 
-👩‍💻 Author Monalisha N 
-QA Automation Engineer | Learning Playwright + TypeScript
+Playwright -Modern auto-wait, web-first assertions
+TypeScript - Type safety
+Page Object Model - Maintainable locators
+Fixtures - Custom base.fixture.ts for DI
+Unique Test Data - Date.now() for email to avoid duplicate user error
+Chromium Only - Fast CI/CD, no flaky cross-browser for E2E
+TutorialNinja Demo - Bypassed demo.opencart.com 403 Cloudflare bot challenge
+
+🐛 Problem Solved During Development
+demo.opencart.com and opencart.com return a 403 bot challenge on Azure/Codespace machines. Switched to tutorialsninja.com/demo/, an identical OpenCart build with no bot protection. All 11 steps now pass consistently.
+
+👩‍💻 Author: Monalisha N
+- QA Automation Engineer
 GitHub: @MonalishaN
-⭐ If you like this repo, please give it a star!
+Framework: playwright-orangehrm-pom
+Focus: Playwright, TypeScript, E2E, POM
 
+⭐ Star this repo if you are learning Playwright E2E!
 
  
