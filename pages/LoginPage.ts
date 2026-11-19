@@ -4,7 +4,7 @@ export class LoginPage {
   constructor(private readonly page: Page) {}
 
   async open(): Promise<void> {
-    await this.page.goto('https://opensource-demo.orangehrmlive.com');
+    await this.page.goto('https://tutorialsninja.com/demo/index.php?route=account/logout');
   }
 
   async login(username: string, password: string): Promise<void> {
@@ -17,4 +17,9 @@ export class LoginPage {
       this.page.getByRole('heading', { name: 'Dashboard' }),
     ).toBeVisible();
   }
+  async logout() {
+  await this.page.locator('a[title="My Account"]').click();
+  await this.page.getByRole('link', { name: 'Logout' }).click();
+  await this.page.getByRole('heading', { name: 'Account Logout' }).waitFor();
+}
 }
