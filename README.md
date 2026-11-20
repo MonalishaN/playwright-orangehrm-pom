@@ -45,11 +45,6 @@ This is the main E2E that passes 100%:
 
 ### 📁 Project Structure
 
-
- 
-
-playwrightMCP/
-├── playwright.config.ts
 ├── fixtures/
 │   ├── base.fixture.ts      # Custom test fixture with all Page Objects
 │   └── test-data.json       # URLs, credentials, search data
@@ -68,17 +63,19 @@ playwrightMCP/
 │   ├── ui/
 │   │   ├── day4-add-employee.spec.ts  # OrangeHRM Add Employee
 │   │   └── orangehrm-login.spec.ts    # OrangeHRM Login
-│   └── ecommerce/
-│       ├── flipkart-search02.spec.ts  # Flipkart Search
-│       ├── opencart-e2e.spec.ts       # 11-step E2E
-│       └── opencart-logout.spec.ts    # OpenCart Logout
-├── utils/
-│   ├── helper.ts
-│   ├── apitestcontext.txt
-│   ├── PlaywrightContextforPOM
-│   └── webcontext.txt
-├── playwright.config.ts     # Chromium project (optimized)
-└── package.json
+│   ├── ecommerce/
+│   │   ├── flipkart-search02.spec.ts  # Flipkart Search
+│   │   ├── opencart-e2e.spec.ts       # 11-step E2E
+│   │   └── opencart-logout.spec.ts    # OpenCart Logout
+│   └── utils/
+│       ├── PlaywrightContextforPOM
+│       ├── apitestcontext.txt
+│       └── webcontext.txt
+├── .gitignore
+├── README.md
+├── package-lock.json
+├── package.json
+└── playwright.config.ts     # Chromium project (optimized)
 
 ### 🚀 How to Run
 
