@@ -4,8 +4,8 @@ export class LoginPage {
   constructor(private readonly page: Page) {}
 
   async open(): Promise<void> {
-    await this.page.goto('https://tutorialsninja.com/demo/index.php?route=account/logout');
-  }
+  await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+}
 
   async login(username: string, password: string): Promise<void> {
     await this.page.locator('input[name="username"]').fill(username);
