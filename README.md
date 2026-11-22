@@ -1,5 +1,7 @@
 # 🎭 Playwright TypeScript POM Framework - OrangeHRM + OpenCart E2E
 
+[![Playwright Tests](https://github.com/MonalishaN/playwright-orangehrm-pom/actions/workflows/playwright.yml/badge.svg)](https://github.com/MonalishaN/playwright-orangehrm-pom/actions/workflows/playwright.yml)
+
 > Enterprise-grade E2E automation framework built with Playwright + TypeScript + Page Object Model. Demonstrates real-world scenarios: HRM + E-Commerce + API.
 
 ![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=Playwright&logoColor=white)
