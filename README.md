@@ -13,14 +13,42 @@
 End-to-End Automation Framework for OrangeHRM using Playwright + TypeScript with Page Object Model, Fixtures, API Testing & HTML Reporting.
 
 **Application Under Test:** https://opensource-demo.orangehrmlive.com
+ 
+- 🛠️ Tech Stack & Best Practices:
 
-## Tech Stack
-- Playwright + TypeScript
-- Page Object Model (POM)
-- Fixtures - `fixtures/base.fixture.ts`
-- API Testing - Playwright `APIRequestContext`
-- HTML Report, Trace, Screenshot on Failure
-- GitHub Actions - CI/CD
+Playwright - Modern auto-wait, web-first assertions
+TypeScript - Type safety
+Page Object Model - Maintainable locators;
+Fixtures - Custom base.fixture.ts for DI;
+Unique Test Data - Date.now() for email to avoid duplicate user error;
+Chromium Only - Fast CI/CD, no flaky cross-browser for E2E
+HTML Report, Trace, Screenshot on Failure
+ GitHub Actions - CI/CD
+  
+ 
+- ## Page Object Model
+
+The framework uses the Page Object Model (POM) pattern to separate test logic from page-specific implementation details.
+
+### How It Works
+
+Each web page gets its own Page Object class that encapsulates:
+
+- **Locators** — CSS selectors / Playwright getters for elements
+- **Actions** — Methods that perform operations (click, fill, select)
+- **Verifications** — Methods that check state (isVisible, getText)
+
+### Available Page Objects
+
+| Class | File | Key Methods |
+| --- | --- | --- |
+| LoginPage (OrangeHRM) | `pages/LoginPage.ts` | `gotoLogin()`, `login()`, `isLoginPageExists()` |
+| PIMPage | `pages/PIMPage.ts` | `addEmployee()`, `searchEmployee()`, `isEmployeeExists()` |
+| LoginPage (OpenCart) | `pages/opencart/LoginPage.ts` | `gotoLogin()`, `login()`, `isLoginPageExists()` |
+| RegisterPage | `pages/opencart/RegisterPage.ts` | `registerUser()`, `isRegistrationSuccess()` |
+| SearchPage | `pages/opencart/SearchPage.ts` | `searchProduct()`, `isProductVisible()` |
+| CartPage | `pages/opencart/CartPage.ts` | `addToCart()`, `isProductInCart()` |
+| FlipkartSearchPage | `pages/flipkart-search.page.ts` | `searchProduct()`, `getSearchResults()` |
 
 ## Features / Tests Covered
 - Login - Valid, Invalid, Empty data
@@ -265,15 +293,7 @@ Steps:
 
 Note: This test uses Fixtures from base.fixture.ts — opencartRegisterPage, opencartLoginPage, opencartSearchPage, opencartCartPage are injected, not created with new Page().
 
-🛠️ Tech Stack & Best Practices:
 
-Playwright - Modern auto-wait, web-first assertions
-TypeScript - Type safety
-Page Object Model - Maintainable locators;
-Fixtures - Custom base.fixture.ts for DI;
-Unique Test Data - Date.now() for email to avoid duplicate user error;
-Chromium Only - Fast CI/CD, no flaky cross-browser for E2E
-TutorialNinja Demo - Bypassed demo.opencart.com 403 Cloudflare bot challenge
 
 ⚙️ Playwright Config
 
