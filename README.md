@@ -8,6 +8,92 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![E2E PASS](https://img.shields.io/badge/OpenCart%20E2E-1%20PASSED-brightgreen?style=for-the-badge)
 
+# Playwright OrangeHRM - POM Framework
+
+End-to-End Automation Framework for OrangeHRM using Playwright + TypeScript with Page Object Model, Fixtures, API Testing & HTML Reporting.
+
+**Application Under Test:** https://opensource-demo.orangehrmlive.com
+
+## Tech Stack
+- Playwright + TypeScript
+- Page Object Model (POM)
+- Fixtures - `fixtures/base.fixture.ts`
+- API Testing - Playwright `APIRequestContext`
+- HTML Report, Trace, Screenshot on Failure
+- GitHub Actions - CI/CD
+
+## Features / Tests Covered
+- Login - Valid, Invalid, Empty data
+- Dashboard - Verify widgets & menus
+- PIM / Employee - Add Employee with unique data, Search Employee
+- Leave - Apply Leave, Verify Leave List
+- Logout
+- API - Fake Store API Product Validation, OrangeHRM Employee API
+
+### 📁 Project Structure
+
+├── fixtures/
+│   ├── base.fixture.ts      # Central fixture - creates all pages
+│   └── test-data.json       # URLs, credentials, search data
+├── pages/
+│   ├── LoginPage.ts         # OrangeHRM
+│   ├── PIMPage.ts
+│   └── opencart/
+│       ├── RegisterPage.ts  # TutorialNinja Register
+│       ├── LoginPage.ts     # TutorialNinja Login
+│       ├── SearchPage.ts    # Search & Product
+│       └── CartPage.ts      # Cart verification
+├── tests/
+│   ├── api/
+│   │   ├── api-product.spec.ts        # 1 API test
+│   │   └── day5-extra-tests.spec.ts   # 5 API tests
+│   ├── ui/
+│   │   ├── day4-add-employee.spec.ts  # OrangeHRM Add Employee
+│   │   └── orangehrm-login.spec.ts    # OrangeHRM Login
+│   ├── ecommerce/
+│   │   ├── flipkart-search02.spec.ts  # Flipkart Search
+│   │   ├── opencart-e2e.spec.ts       # 11-step E2E
+│   │   └── opencart-logout.spec.ts    # OpenCart Logout
+│   └── utils/
+│       ├── PlaywrightContextforPOM
+│       ├── apitestcontext.txt
+│       └── webcontext.txt
+├── .gitignore
+├── README.md
+├── package-lock.json
+├── package.json
+└── playwright.config.ts     # Chromium project (optimized)
+
+ 
+## Prerequisites
+- Node.js 18+
+- npm
+- Git
+
+## How to Run
+```bash
+npm install
+npx playwright install
+npx playwright test
+npx playwright show-report
+npx playwright install chromium 
+
+## How to Run
+
+Headed mode - watch the browser:
+npx playwright test tests/ecommerce/opencart-e2e.spec.ts --project=chromium --headed --workers=1
+
+ Fast list mode - no report server hang:
+npx playwright test tests/ecommerce/opencart-e2e.spec.ts --project=chromium --reporter=list --workers=1
+
+Other commands from package.json:
+npm test                # playwright test
+npm run test:e2e        # playwright test
+npm run test:headed     # playwright test --headed
+npm run test:ui         # playwright test --ui
+
+
+
 ### 🔥 Live Demo Results
 
 **OpenCart E2E - 11 Steps: ✅ PASSED (58.7s)**
@@ -42,62 +128,7 @@ This is the main E2E that passes 100%:
 
 #### 4. Flipkart - Search
 - Search for products and verify results
-
----
-
-### 📁 Project Structure
-
-├── fixtures/
-│   ├── base.fixture.ts      # Custom test fixture with all Page Objects
-│   └── test-data.json       # URLs, credentials, search data
-├── pages/
-│   ├── LoginPage.ts         # OrangeHRM
-│   ├── PIMPage.ts
-│   └── opencart/
-│       ├── RegisterPage.ts  # TutorialNinja Register
-│       ├── LoginPage.ts     # TutorialNinja Login
-│       ├── SearchPage.ts    # Search & Product
-│       └── CartPage.ts      # Cart verification
-├── tests/
-│   ├── api/
-│   │   ├── api-product.spec.ts        # 1 API test
-│   │   └── day5-extra-tests.spec.ts   # 5 API tests
-│   ├── ui/
-│   │   ├── day4-add-employee.spec.ts  # OrangeHRM Add Employee
-│   │   └── orangehrm-login.spec.ts    # OrangeHRM Login
-│   ├── ecommerce/
-│   │   ├── flipkart-search02.spec.ts  # Flipkart Search
-│   │   ├── opencart-e2e.spec.ts       # 11-step E2E
-│   │   └── opencart-logout.spec.ts    # OpenCart Logout
-│   └── utils/
-│       ├── PlaywrightContextforPOM
-│       ├── apitestcontext.txt
-│       └── webcontext.txt
-├── .gitignore
-├── README.md
-├── package-lock.json
-├── package.json
-└── playwright.config.ts     # Chromium project (optimized)
-
-### 🚀 How to Run
-
-**Install:**
-```bash
-npm install
-npx playwright install chromium
-## How to Run
-
-Headed mode - watch the browser:
-npx playwright test tests/ecommerce/opencart-e2e.spec.ts --project=chromium --headed --workers=1
-
- Fast list mode - no report server hang:
-npx playwright test tests/ecommerce/opencart-e2e.spec.ts --project=chromium --reporter=list --workers=1
-
-Other commands from package.json:
-npm test                # playwright test
-npm run test:e2e        # playwright test
-npm run test:headed     # playwright test --headed
-npm run test:ui         # playwright test --ui
+ 
 
 🧪 Test Cases - All 11 Tests With Steps
 
